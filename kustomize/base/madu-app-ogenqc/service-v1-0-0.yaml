@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations: {}
+  labels:
+    app: madu-app-ogenqc-v1-0-0
+    applicationId: app_1fdef6b9-7975-4a60-ae63-0d87eace7bdf
+    version: v1.0.0
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    projectId: project_b7c64762-48e8-4b3b-a0b8-3b97faeb217f
+  name: madu-app-ogenqc-v1-0-0
+spec:
+  selector:
+    app: madu-app-ogenqc-v1-0-0
