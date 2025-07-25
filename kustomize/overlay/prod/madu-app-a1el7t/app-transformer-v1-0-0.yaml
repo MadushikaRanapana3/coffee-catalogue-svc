@@ -1,0 +1,51 @@
+apiVersion: transformers.customplugin.co/v1
+kind: SkyUAppTransformer
+metadata:
+  name: skyu-deployment
+  annotations:
+    config.kubernetes.io/function: |
+      exec:
+        path: skyu-app-transformer
+spec:
+  applicationContainers:
+    - imageTag: latest
+      cpuRequestMili: 100
+      cpuLimitMili: 150
+      memoryRequestMb: 350
+      memoryLimitMb: 450
+      args: []
+      command: []
+      configMounts: []
+      applicationPorts:
+        - port: 80
+          targetPort: 80
+          protocol: TCP
+          apiSpec:
+            gitPath: madutesting
+      healthChecks: []
+      name: madu-app-a1el7t-main
+      imagePullPolicy: Always
+      imageRegistry: docker.io//madu-app-a1el7t
+      imagePullSecretName: imagepull-docker
+      credentialId: credential_7b3452f6-c914-4011-873a-da5021828eff
+  minReplicas: 1
+  maxReplicas: 1
+  terminationGracePeriodSeconds: 60
+  nodeSelector: {}
+  suspend: false
+  ttlSecondsAfterFinished: 0
+  labels:
+    app: madu-app-a1el7t
+    version: v1.0.0
+    applicationId: app_c5e49f42-1d50-4b62-b970-e2d8283073c0
+    projectId: project_b7c64762-48e8-4b3b-a0b8-3b97faeb217f
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    environmentId: env_c327b5e9-bf9f-465a-b67b-ebee74be369d
+    environmentName: prod
+  horizontalAutoScalingRules: []
+  volumes: []
+  type: Deployment
+  name: madu-app-a1el7t
+  serviceType: ClusterIP
+  version: v1.0.0
+  namespace: qetesting-prod
