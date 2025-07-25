@@ -1,1 +1,1 @@
-Generate a Kubernetes resource yaml 
+Rejecting request: The user request does not specify the type of Kubernetes resource or the details needed to create a YAML configuration. Please provide specific details about the Kubernetes resource you want to configure.
