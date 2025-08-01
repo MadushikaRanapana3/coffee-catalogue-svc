@@ -1,0 +1,177 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: helm-app-v1-0-0
+  namespace: qetesting-staging
+  labels:
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    projectId: project_b7c64762-48e8-4b3b-a0b8-3b97faeb217f
+    environmentId: env_fcb8722b-9ada-4602-b7d0-a674301e65d0
+    applicationId: app_cab32d8c-80f5-448b-9699-11c7abadf609
+spec:
+  interval: 5m0s
+  upgrade:
+    disableWait: true
+    remediation:
+      retries: 3
+    force: true
+  chart:
+    spec:
+      chart: .
+      sourceRef:
+        kind: GitRepository
+        name: helm-app-v1-0-0
+        namespace: qetesting-staging
+      valuesFiles:
+        - .
+      interval: 1m0s
+      reconcileStrategy: Revision
+  values: {}
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              group: apps
+              version: v1
+              kind: Deployment
+              name: helm-app-v1-0-0
+            patch: |
+              - op: add
+                path: /spec/template/metadata/labels
+                value: {}
+              - op: add
+                path: /spec/template/metadata/labels/organizationId
+                value: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+              - op: add
+                path: /spec/template/metadata/labels/projectId
+                value: project_b7c64762-48e8-4b3b-a0b8-3b97faeb217f
+              - op: add
+                path: /spec/template/metadata/labels/applicationId
+                value: app_cab32d8c-80f5-448b-9699-11c7abadf609
+              - op: add
+                path: /spec/template/metadata/labels/environmentId
+                value: env_fcb8722b-9ada-4602-b7d0-a674301e65d0
+              - op: add
+                path: /spec/template/metadata/labels/version
+                value: v1.0.0
+          - target:
+              kind: >-
+                (Deployment|StatefulSet|DaemonSet|CronJob|Job|Pod|ConfigMap|Secret|Service|Ingress|PersistentVolumeClaim|Namespace|PersistentVolume|Service)
+            patch: |
+              - op: add
+                path: /metadata/labels
+                value: {}
+              - op: add
+                path: /metadata/labels
+                value: {}
+              - op: add
+                path: /metadata/labels/organizationId
+                value: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+              - op: add
+                path: /metadata/labels/projectId
+                value: project_b7c64762-48e8-4b3b-a0b8-3b97faeb217f
+              - op: add
+                path: /metadata/labels/applicationId
+                value: app_cab32d8c-80f5-448b-9699-11c7abadf609
+              - op: add
+                path: /metadata/labels/environmentId
+                value: env_fcb8722b-9ada-4602-b7d0-a674301e65d0
+              - op: add
+                path: /metadata/labels/version
+                value: v1.0.0
+          - target:
+              group: batch
+              version: v1
+              kind: Job
+              name: helm-app-v1-0-0
+            patch: |
+              - op: add
+                path: /spec/template/metadata/labels
+                value: {}
+              - op: add
+                path: /spec/template/metadata/labels/organizationId
+                value: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+              - op: add
+                path: /spec/template/metadata/labels/projectId
+                value: project_b7c64762-48e8-4b3b-a0b8-3b97faeb217f
+              - op: add
+                path: /spec/template/metadata/labels/applicationId
+                value: app_cab32d8c-80f5-448b-9699-11c7abadf609
+              - op: add
+                path: /spec/template/metadata/labels/environmentId
+                value: env_fcb8722b-9ada-4602-b7d0-a674301e65d0
+              - op: add
+                path: /spec/template/metadata/labels/version
+                value: v1.0.0
+          - target:
+              group: batch
+              version: v1
+              kind: CronJob
+              name: helm-app-v1-0-0
+            patch: |
+              - op: add
+                path: /spec/jobTemplate/metadata/labels
+                value: {}
+              - op: add
+                path: /spec/jobTemplate/metadata/labels/organizationId
+                value: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+              - op: add
+                path: /spec/jobTemplate/metadata/labels/projectId
+                value: project_b7c64762-48e8-4b3b-a0b8-3b97faeb217f
+              - op: add
+                path: /spec/jobTemplate/metadata/labels/applicationId
+                value: app_cab32d8c-80f5-448b-9699-11c7abadf609
+              - op: add
+                path: /spec/jobTemplate/metadata/labels/environmentId
+                value: env_fcb8722b-9ada-4602-b7d0-a674301e65d0
+              - op: add
+                path: /spec/jobTemplate/metadata/labels/version
+                value: v1.0.0
+          - target:
+              group: batch
+              version: v1
+              kind: CronJob
+              name: helm-app-v1-0-0
+            patch: |
+              - op: add
+                path: /spec/jobTemplate/spec/template/metadata/labels
+                value: {}
+              - op: add
+                path: /spec/jobTemplate/spec/template/metadata/labels/organizationId
+                value: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+              - op: add
+                path: /spec/jobTemplate/spec/template/metadata/labels/projectId
+                value: project_b7c64762-48e8-4b3b-a0b8-3b97faeb217f
+              - op: add
+                path: /spec/jobTemplate/spec/template/metadata/labels/applicationId
+                value: app_cab32d8c-80f5-448b-9699-11c7abadf609
+              - op: add
+                path: /spec/jobTemplate/spec/template/metadata/labels/environmentId
+                value: env_fcb8722b-9ada-4602-b7d0-a674301e65d0
+              - op: add
+                path: /spec/jobTemplate/spec/template/metadata/labels/version
+                value: v1.0.0
+          - target:
+              group: apps
+              version: v1
+              kind: StatefulSet
+              name: helm-app-v1-0-0
+            patch: |
+              - op: add
+                path: /spec/template/metadata/labels
+                value: {}
+              - op: add
+                path: /spec/template/metadata/labels/organizationId
+                value: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+              - op: add
+                path: /spec/template/metadata/labels/projectId
+                value: project_b7c64762-48e8-4b3b-a0b8-3b97faeb217f
+              - op: add
+                path: /spec/template/metadata/labels/applicationId
+                value: app_cab32d8c-80f5-448b-9699-11c7abadf609
+              - op: add
+                path: /spec/template/metadata/labels/environmentId
+                value: env_fcb8722b-9ada-4602-b7d0-a674301e65d0
+              - op: add
+                path: /spec/template/metadata/labels/version
+                value: v1.0.0
