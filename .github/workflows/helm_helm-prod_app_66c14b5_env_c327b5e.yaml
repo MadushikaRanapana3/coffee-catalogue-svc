@@ -681,6 +681,7 @@ jobs:
             
     needs:
       - update-helm-values
+      - _status_testing
     permissions: write-all
     if: github.event.client_payload.releaseData == null
     runs-on: ubuntu-latest
