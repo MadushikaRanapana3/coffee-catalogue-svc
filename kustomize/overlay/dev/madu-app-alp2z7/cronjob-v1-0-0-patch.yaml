@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  annotations:
+    reloader.stakater.com/auto: 'true'
+  labels:
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+    applicationId: app_71903509-1e10-456c-a816-531e61372536
+    version: v1.0.0
+    environmentId: env_541b1768-d61f-4bb0-a53b-0fa628d393df
+  name: madu-app-alp2z7-v1-0-0
+spec:
+  successfulJobsHistoryLimit: 10
+  jobTemplate:
+    metadata:
+      annotations: {}
+      labels:
+        organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+        projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+        applicationId: app_71903509-1e10-456c-a816-531e61372536
+        version: v1.0.0
+        environmentId: env_541b1768-d61f-4bb0-a53b-0fa628d393df
+    spec:
+      template:
+        metadata:
+          labels:
+            organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+            projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+            applicationId: app_71903509-1e10-456c-a816-531e61372536
+            version: v1.0.0
+            environmentId: env_541b1768-d61f-4bb0-a53b-0fa628d393df

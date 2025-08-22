@@ -1,0 +1,46 @@
+apiVersion: transformers.customplugin.co/v1
+kind: SkyUAppTransformer
+metadata:
+  name: skyu-deployment
+  annotations:
+    config.kubernetes.io/function: |
+      exec:
+        path: skyu-app-transformer
+spec:
+  applicationContainers:
+    - imageTag: latest
+      cpuRequestMili: 100
+      cpuLimitMili: 150
+      memoryRequestMb: 350
+      memoryLimitMb: 450
+      args: []
+      command: []
+      configMounts: []
+      applicationPorts: []
+      healthChecks: []
+      name: madu-app-alp2z7-main
+      imagePullPolicy: Always
+      imageRegistry: docker.io//madu-app-alp2z7
+      imagePullSecretName: imagepull-docker
+      credentialId: credential_8e620d48-87e4-41b2-b00d-9d628915aeb1
+  minReplicas: 1
+  maxReplicas: 1
+  terminationGracePeriodSeconds: 60
+  nodeSelector: {}
+  suspend: false
+  ttlSecondsAfterFinished: 86400
+  labels:
+    app: madu-app-alp2z7
+    version: v1.0.0
+    applicationId: app_71903509-1e10-456c-a816-531e61372536
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    environmentId: env_541b1768-d61f-4bb0-a53b-0fa628d393df
+    environmentName: dev
+  horizontalAutoScalingRules: []
+  volumes: []
+  type: CronJob
+  name: madu-app-alp2z7
+  cronTab: 0 0 1 * *
+  version: v1.0.0
+  namespace: qetesting2-dev
