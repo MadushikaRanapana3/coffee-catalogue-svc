@@ -1,0 +1,17 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  annotations: {}
+  name: madu-app-o305hs-v1-0-0
+  labels:
+    app: madu-app-o305hs-v1-0-0
+    applicationId: app_cee52883-568d-448f-999c-ecc0c214ca51
+    version: v1.0.0
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+    environmentId: env_cca49729-8f37-4aa4-981e-155a643363e6
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: madu-app-o305hs-v1-0-0
