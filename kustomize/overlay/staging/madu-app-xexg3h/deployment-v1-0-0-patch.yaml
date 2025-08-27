@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: madu-app-xexg3h-v1-0-0
+  labels:
+    app: madu-app-xexg3h-v1-0-0
+    applicationId: app_afa9fd6d-bba2-42f3-882c-dc8b637c3f8d
+    version: v1.0.0
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+    environmentId: env_cca49729-8f37-4aa4-981e-155a643363e6
+  annotations:
+    reloader.stakater.com/auto: 'true'
+spec:
+  selector:
+    matchLabels:
+      app: madu-app-xexg3h-v1-0-0
+  template:
+    metadata:
+      labels:
+        app: madu-app-xexg3h-v1-0-0
+        applicationId: app_afa9fd6d-bba2-42f3-882c-dc8b637c3f8d
+        version: v1.0.0
+        organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+        projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+        environmentId: env_cca49729-8f37-4aa4-981e-155a643363e6
