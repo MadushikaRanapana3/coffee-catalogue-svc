@@ -1,0 +1,51 @@
+apiVersion: transformers.customplugin.co/v1
+kind: SkyUAppTransformer
+metadata:
+  name: skyu-deployment
+  annotations:
+    config.kubernetes.io/function: |
+      exec:
+        path: skyu-app-transformer
+spec:
+  applicationContainers:
+    - imageTag: latest
+      cpuRequestMili: 100
+      cpuLimitMili: 150
+      memoryRequestMb: 350
+      memoryLimitMb: 450
+      args: []
+      command: []
+      configMounts: []
+      applicationPorts:
+        - port: 80
+          targetPort: 80
+          protocol: TCP
+          apiSpec:
+            gitPath: madutesting
+      healthChecks: []
+      name: madu-app-jit2sv-main
+      imagePullPolicy: Always
+      imageRegistry: docker.io//madu-app-jit2sv
+      imagePullSecretName: imagepull-docker
+      credentialId: credential_79d6ba2a-a6ab-4413-a7d6-f24b8e34c3ab
+  minReplicas: 1
+  maxReplicas: 1
+  terminationGracePeriodSeconds: 60
+  nodeSelector: {}
+  suspend: false
+  ttlSecondsAfterFinished: 0
+  labels:
+    app: madu-app-jit2sv
+    version: v1.0.0
+    applicationId: app_6d632707-0b24-4f07-bee4-b5d8312d1af9
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    environmentId: env_cca49729-8f37-4aa4-981e-155a643363e6
+    environmentName: staging
+  horizontalAutoScalingRules: []
+  volumes: []
+  type: Deployment
+  name: madu-app-jit2sv
+  serviceType: ClusterIP
+  version: v1.0.0
+  namespace: qetesting2-staging
