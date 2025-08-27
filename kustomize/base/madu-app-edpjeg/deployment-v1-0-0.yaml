@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: madu-app-edpjeg-v1-0-0
+  labels:
+    app: madu-app-edpjeg-v1-0-0
+    applicationId: app_cc015ad2-6036-4ac4-ba29-3212333b48bb
+    version: v1.0.0
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+  annotations:
+    reloader.stakater.com/auto: 'true'
+spec:
+  selector:
+    matchLabels:
+      app: madu-app-edpjeg-v1-0-0
+  template:
+    metadata:
+      labels:
+        app: madu-app-edpjeg-v1-0-0
+        applicationId: app_cc015ad2-6036-4ac4-ba29-3212333b48bb
+        version: v1.0.0
+        organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+        projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
