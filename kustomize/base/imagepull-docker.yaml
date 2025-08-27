@@ -13,4 +13,4 @@ spec:
     organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
     projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
   provider: docker
-  secretRef: secret_3006aded-e969-4d24-a02f-e4de3ac2e750
+  secretRef: secret_bcc3333f-047f-4c9d-80ae-589308406d2d
