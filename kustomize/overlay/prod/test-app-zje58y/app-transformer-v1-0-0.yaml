@@ -1,0 +1,51 @@
+apiVersion: transformers.customplugin.co/v1
+kind: SkyUAppTransformer
+metadata:
+  name: skyu-deployment
+  annotations:
+    config.kubernetes.io/function: |
+      exec:
+        path: skyu-app-transformer
+spec:
+  applicationContainers:
+    - imageTag: latest
+      cpuRequestMili: 100
+      cpuLimitMili: 150
+      memoryRequestMb: 350
+      memoryLimitMb: 450
+      args: []
+      command: []
+      configMounts: []
+      applicationPorts:
+        - port: 80
+          targetPort: 80
+          protocol: TCP
+          apiSpec:
+            gitPath: madutesting
+      healthChecks: []
+      name: test-app-zje58y-main
+      imagePullPolicy: Always
+      imageRegistry: docker.io//test-app-zje58y
+      imagePullSecretName: imagepull-docker
+      credentialId: credential_d0d374be-ee39-45fb-a2df-179470a159f7
+  minReplicas: 1
+  maxReplicas: 1
+  terminationGracePeriodSeconds: 60
+  nodeSelector: {}
+  suspend: false
+  ttlSecondsAfterFinished: 0
+  labels:
+    app: test-app-zje58y
+    version: v1.0.0
+    applicationId: app_e8b5f625-da7e-41a1-bdf5-1696d2e2dcf4
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    environmentId: env_29b2c391-17bd-4346-8d22-e7f2ce42a2e7
+    environmentName: prod
+  horizontalAutoScalingRules: []
+  volumes: []
+  type: Deployment
+  name: test-app-zje58y
+  serviceType: ClusterIP
+  version: v1.0.0
+  namespace: qetesting2-prod

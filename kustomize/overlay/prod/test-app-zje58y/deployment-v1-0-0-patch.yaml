@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app-zje58y-v1-0-0
+  labels:
+    app: test-app-zje58y-v1-0-0
+    applicationId: app_e8b5f625-da7e-41a1-bdf5-1696d2e2dcf4
+    version: v1.0.0
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+    environmentId: env_29b2c391-17bd-4346-8d22-e7f2ce42a2e7
+  annotations:
+    reloader.stakater.com/auto: 'true'
+spec:
+  selector:
+    matchLabels:
+      app: test-app-zje58y-v1-0-0
+  template:
+    metadata:
+      labels:
+        app: test-app-zje58y-v1-0-0
+        applicationId: app_e8b5f625-da7e-41a1-bdf5-1696d2e2dcf4
+        version: v1.0.0
+        organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+        projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+        environmentId: env_29b2c391-17bd-4346-8d22-e7f2ce42a2e7
