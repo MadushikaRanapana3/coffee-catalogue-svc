@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  annotations: {}
+  name: test-app-deh7qh-v1-0-0
+  labels:
+    app: test-app-deh7qh-v1-0-0
+    applicationId: app_01b887f2-e5c5-446b-aabc-f9288754b619
+    version: v1.0.0
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: test-app-deh7qh-v1-0-0

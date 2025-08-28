@@ -1,0 +1,51 @@
+apiVersion: transformers.customplugin.co/v1
+kind: SkyUAppTransformer
+metadata:
+  name: skyu-deployment
+  annotations:
+    config.kubernetes.io/function: |
+      exec:
+        path: skyu-app-transformer
+spec:
+  applicationContainers:
+    - imageTag: latest
+      cpuRequestMili: 100
+      cpuLimitMili: 150
+      memoryRequestMb: 350
+      memoryLimitMb: 450
+      args: []
+      command: []
+      configMounts: []
+      applicationPorts:
+        - port: 80
+          targetPort: 80
+          protocol: TCP
+          apiSpec:
+            gitPath: madutesting
+      healthChecks: []
+      name: test-app-deh7qh-main
+      imagePullPolicy: Always
+      imageRegistry: docker.io//test-app-deh7qh
+      imagePullSecretName: imagepull-docker
+      credentialId: credential_99c205cc-5589-4ab7-b3c9-f28e1eed2dce
+  minReplicas: 1
+  maxReplicas: 1
+  terminationGracePeriodSeconds: 60
+  nodeSelector: {}
+  suspend: false
+  ttlSecondsAfterFinished: 0
+  labels:
+    app: test-app-deh7qh
+    version: v1.0.0
+    applicationId: app_01b887f2-e5c5-446b-aabc-f9288754b619
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    environmentId: env_8ccb9449-73fb-4193-987a-97071d9f60a6
+    environmentName: test-env
+  horizontalAutoScalingRules: []
+  volumes: []
+  type: Deployment
+  name: test-app-deh7qh
+  serviceType: ClusterIP
+  version: v1.0.0
+  namespace: test-ns
