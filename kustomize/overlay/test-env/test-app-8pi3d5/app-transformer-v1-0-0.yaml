@@ -1,0 +1,46 @@
+apiVersion: transformers.customplugin.co/v1
+kind: SkyUAppTransformer
+metadata:
+  name: skyu-deployment
+  annotations:
+    config.kubernetes.io/function: |
+      exec:
+        path: skyu-app-transformer
+spec:
+  applicationContainers:
+    - imageTag: latest
+      cpuRequestMili: 100
+      cpuLimitMili: 150
+      memoryRequestMb: 350
+      memoryLimitMb: 450
+      args: []
+      command: []
+      configMounts: []
+      applicationPorts: []
+      healthChecks: []
+      name: test-app-8pi3d5-main
+      imagePullPolicy: Always
+      imageRegistry: docker.io//test-app-8pi3d5
+      imagePullSecretName: imagepull-docker
+      credentialId: credential_46f02857-b543-480d-b24a-f6b97a95dd40
+  minReplicas: 1
+  maxReplicas: 1
+  terminationGracePeriodSeconds: 60
+  nodeSelector: {}
+  suspend: false
+  ttlSecondsAfterFinished: 86400
+  labels:
+    app: test-app-8pi3d5
+    version: v1.0.0
+    applicationId: app_c097ff9e-3a6f-46f5-b534-799e5ac934f8
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    environmentId: env_8ccb9449-73fb-4193-987a-97071d9f60a6
+    environmentName: test-env
+  horizontalAutoScalingRules: []
+  volumes: []
+  type: CronJob
+  name: test-app-8pi3d5
+  cronTab: 0 0 1 * *
+  version: v1.0.0
+  namespace: test-ns
