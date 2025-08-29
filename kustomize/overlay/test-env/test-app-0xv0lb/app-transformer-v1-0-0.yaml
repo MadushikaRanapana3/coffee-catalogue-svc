@@ -1,0 +1,49 @@
+apiVersion: transformers.customplugin.co/v1
+kind: SkyUAppTransformer
+metadata:
+  name: skyu-deployment
+  annotations:
+    config.kubernetes.io/function: |
+      exec:
+        path: skyu-app-transformer
+spec:
+  applicationContainers:
+    - imageTag: tag
+      cpuRequestMili: 100
+      cpuLimitMili: 150
+      memoryRequestMb: 350
+      memoryLimitMb: 450
+      args: []
+      command: []
+      configMounts: []
+      applicationPorts:
+        - port: 80
+          targetPort: 80
+          protocol: TCP
+          apiSpec:
+            gitPath: madutesting
+      healthChecks: []
+      name: test-app-0xv0lb-main
+      imagePullPolicy: Always
+      imageRegistry: madutesting/image
+  minReplicas: 1
+  maxReplicas: 1
+  terminationGracePeriodSeconds: 60
+  nodeSelector: {}
+  suspend: false
+  ttlSecondsAfterFinished: 0
+  labels:
+    app: test-app-0xv0lb
+    version: v1.0.0
+    applicationId: app_de982276-78d9-466c-98f9-0d5c8d609523
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    environmentId: env_8ccb9449-73fb-4193-987a-97071d9f60a6
+    environmentName: test-env
+  horizontalAutoScalingRules: []
+  volumes: []
+  type: Deployment
+  name: test-app-0xv0lb
+  serviceType: ClusterIP
+  version: v1.0.0
+  namespace: test-ns
