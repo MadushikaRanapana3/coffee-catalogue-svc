@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app-rdh8s0-v1-0-0
+  labels:
+    app: test-app-rdh8s0-v1-0-0
+    applicationId: app_3110fb22-6b1b-46e0-a0b8-393578174270
+    version: v1.0.0
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+  annotations:
+    reloader.stakater.com/auto: 'true'
+spec:
+  selector:
+    matchLabels:
+      app: test-app-rdh8s0-v1-0-0
+  template:
+    metadata:
+      labels:
+        app: test-app-rdh8s0-v1-0-0
+        applicationId: app_3110fb22-6b1b-46e0-a0b8-393578174270
+        version: v1.0.0
+        organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+        projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
