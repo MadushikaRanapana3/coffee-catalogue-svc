@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app-pgrv19-v1-0-0
+  labels:
+    app: test-app-pgrv19-v1-0-0
+    applicationId: app_982f89f6-8e5c-4a8d-b62a-c09c7e96aa6f
+    version: v1.0.0
+    organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+    projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+    environmentId: env_cca49729-8f37-4aa4-981e-155a643363e6
+  annotations:
+    reloader.stakater.com/auto: 'true'
+spec:
+  selector:
+    matchLabels:
+      app: test-app-pgrv19-v1-0-0
+  template:
+    metadata:
+      labels:
+        app: test-app-pgrv19-v1-0-0
+        applicationId: app_982f89f6-8e5c-4a8d-b62a-c09c7e96aa6f
+        version: v1.0.0
+        organizationId: org_20c6c833-c6da-41ca-85b9-9573910c5b75
+        projectId: project_c51656d0-4d61-40eb-9d76-2681b7eb493e
+        environmentId: env_cca49729-8f37-4aa4-981e-155a643363e6
